@@ -2,15 +2,20 @@ import leia from 'readline-sync'
 import exe01 from './exercicio01';
 import exe02 from './exercicio02';
 import exe03 from './exercicio03';
-import exe04 from './exerciocio04';
+import exe04 from './exercicio04';
 import exe05 from './exercicio05';
 import exe06 from './exercicio06';
 import exe07 from './exercicio07';
-import exe08 from './exercicio8';
+import exe08 from './exercicio08';
 import exe09 from './exercicio09';
 import exe10 from './exercicio10';
 import exe11 from './exercicio11';
 import exe12 from './exercicio12';
+import exe13 from './exercicio13';
+import exe15 from './exercicio15';
+import exe16 from './exercicio16';
+import exe17 from './exercicio17';
+import exe18 from './exercicio18';
 
 var opt = leia.keyInSelect([
     
@@ -25,9 +30,12 @@ var opt = leia.keyInSelect([
     "9 - Exercicio 09",
     "10 - Exercicio 10",
     "11 - Exercicio 11",
-    "12 - Exercicio 12"
-    
-
+    "12 - Exercicio 12",
+    "13 - Exercicio 13",
+    "15 - Exercicio 15",
+    "16 - Exercicio 16",
+    "17 - Exercicio 17",
+    "18 - Exercicio 18"
 ])+1
 
 
@@ -67,6 +75,21 @@ switch(opt){
     break;
     case 12:
         exe12()
+    break;
+    case 13:
+       exe13()
+    break;
+    case 14:
+       exe15()
+    break;
+    case 15:
+       exe16()
+    break;
+    case 16:
+       exe17()
+    break;
+    case 17:
+       exe18()
     break;
 }
 
