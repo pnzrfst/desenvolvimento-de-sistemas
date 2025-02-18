@@ -26,6 +26,9 @@ import exe25 from './exercicio25';
 import exe26 from './exercicio26';
 import exe27 from './exercicio27';
 import exe28 from './exercicio28';
+import exe29 from './exercicio29';
+import exe30 from './exercicio30';
+
 
 var opt = leia.keyInSelect([
     
@@ -47,16 +50,18 @@ var opt = leia.keyInSelect([
     "16 - Exercicio 16",
     "17 - Exercicio 17",
     "18 - Exercicio 18",
-    "18 - Exercicio 19",
-    "19 - Exercicio 20",
-    "20 - Exercicio 21",
-    "21 - Exercicio 22",
-    "22 - Exercicio 23",
-    "22 - Exercicio 24",
-    "23 - Exercicio 25",
-    "24 - Exercicio 26",
-    "25 - Exercicio 27",
-    "26 - Exercicio 28"
+    "19 - Exercicio 19",
+    "20 - Exercicio 20",
+    "21 - Exercicio 21",
+    "22 - Exercicio 22",
+    "23 - Exercicio 23",
+    "24 - Exercicio 24",
+    "25 - Exercicio 25",
+    "26 - Exercicio 26",
+    "27 - Exercicio 27",
+    "28 - Exercicio 28",
+    "29 - Exercicio 29",
+    "30 - Exercicio 30"
 ])+1
 
 
@@ -141,6 +146,12 @@ switch(opt){
     break;
     case 27:
        exe28()
+    break;
+    case 28:
+      exe29()
+    break;
+    case 29:
+      exe30()
     break;
 }
 
