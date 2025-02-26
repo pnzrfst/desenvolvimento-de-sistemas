@@ -6,9 +6,7 @@ async function buscarUser(){
         return
     }
 
-    const response = await fetch(`https://api.github.com/users/${user}`, {
-        method: 'GET'
-    });
+    const response = await fetch(`https://api.github.com/users/${user}`);
 
     const item = await response.json()
     
