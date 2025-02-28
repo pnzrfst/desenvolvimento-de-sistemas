@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body{
+    background-color: rgba(228, 226, 226, 0);
+    font-size: large;
+}
+
+.header img{
+    height: 50px;
+    border-radius: 50%;
+}
+
+.header{
+    background-color: white;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.041);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.navigation_items{
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+}
+
+
+.navigation_items .opts{
+    display: flex;
+    width: 15rem;
+    list-style: none;
+    justify-content: space-between;
+}
+
+/*-------------------------------------------------------------*/
+
+main .div_cadastro{
+    padding: 4rem;
+    background-color: white;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.041);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.div_cadastro .cadastrar_user{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 50%;
+}
+
+.cadastrar_user input{
+    width: 80%;
+    border: none;
+    background-color: rgba(202, 198, 198, 0.377);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.041);
+    outline: none;
+    padding: 0.3rem;
+}
+
+#saveUser{
+    width: 30%;
+    padding: 0.6rem;
+    border: none;
+    background-color: rgba(73, 141, 73, 0.568);
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+    align-self: center;
+}
+
+#saveUser:hover{
+    background-color: green;
+}
+
+/*-----------------------------------------------------------------*/
+
+.users_section{
+    padding: 4rem;
+}
+
+.users_section .mostrarCadastros{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+}
+
+.mostrarCadastros .usersCadastrados{
+    list-style: none;
+    display: contents;
+}
+
+.usersCadastrados li{
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.082);
+    padding: 1rem;
+}
+.usersCadastrados li h1{
+    text-align: center;
+}
+

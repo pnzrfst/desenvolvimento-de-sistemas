@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD usando requisicoes HTTP</title>
+</head>
+<body>
+    <header class="header">
+        <span class="logo"><img src="https://avatars.githubusercontent.com/u/139078849?v=4" alt="logo">
+            <img src="https://avatars.githubusercontent.com/u/170213617?v=4" alt="logo">
+        </span>
+        <nav class="navigation_items">
+            <ul class="opts">
+                <li>Inicio</li>
+                <li>Perfil</li>
+                <li>Ações</li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="div_cadastro">
+            <form class="cadastrar_user">
+                <h1>Cadastre aqui seus usuários: </h1>
+                <input type="text" id="nomeUser" placeholder="Insira seu nome: " required>
+                <input type="number" name="idadeUser" id="idadeUser" placeholder="Insira sua idade: " required>
+                <input type="email" id="emailUser" placeholder="Insira seu email: " required>
+                <input type="number" id="numeroTelefone" placeholder="Insira seu número de telefone: " required>
+                <input type="text" id="enderecoUser" placeholder="Insira seu endereço: " required>
+                <input type="text" id="cidadeUser" placeholder="Insira sua cidade: " required>
+                <button type="button" id="saveUser" onclick="cadastrarUser(event)">Salvar</button>
+            </form>
+        </section>
+    </main>
+    <aside class="users_section">
+        <section class="mostrarCadastros">
+            <ul class="usersCadastrados">
+                <!-- <li><h1>Teste</h1><br>
+                    Nome <br>
+                    Email <br>
+                    Numero <br>
+                    Endereco <br>
+                    Cidade <br>
+                </li>
+                <li><h1>Teste</h1><br>
+                    Nome <br>
+                    Email <br>
+                    Numero <br>
+                    Endereco <br>
+                    Cidade <br>
+                </li>
+                <li><h1>Teste</h1><br>
+                    Nome <br>
+                    Email <br>
+                    Numero <br>
+                    Endereco <br>
+                    Cidade <br>
+                </li>
+                <li><h1>Teste</h1><br>
+                    Nome <br>
+                    Email <br>
+                    Numero <br>
+                    Endereco <br>
+                    Cidade <br>
+                </li>
+                <li><h1>Teste</h1><br>
+                    Nome <br>
+                    Email <br>
+                    Numero <br>
+                    Endereco <br>
+                    Cidade <br>
+                </li>
+                 -->
+            </ul>
+        </section>
+    </aside>
+    <footer></footer>
+
+    <script src="./index.js"></script>
+</body>
+</html>
