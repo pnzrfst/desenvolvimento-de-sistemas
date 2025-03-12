@@ -1,38 +1,24 @@
-import Link from "next/link";
+'use client'
+
+import { useState } from "react";
 import "./home.css";
-import Person from "@/components/Person";
 
 export default function Home() {
-  const lista = [
-    {
-      name: "Gustavo",
-      age: 27
-    },
-    {
-      name: "Maria",
-      age: 20
-    },
-    {
-      name: "João",
-      age: 40
-    }
-  ]
+  const [contador, setContador] = useState<number>(0)
 
+  function incrementar() {
+    setContador(contador + 1);
+  }
+
+  function resetar() {
+    setContador(0);
+  }
 
   return (
     <div>
-      <h1>Hello Worlds</h1>
-      <h2>teste</h2>
-
-      <Link href="/login">
-        <button>LOGIN</button>
-      </Link>
-
-      <div className="container">
-        {lista.map((item) => (
-          < Person nome={item.name} idade={item.age} key={item.name} />
-        ))}
-      </div>
+      <h1>Contador: {contador}</h1>
+      <button onClick={incrementar}>INCREMENTAR</button>
+      <button onClick={resetar}>RESETAR</button>
     </div>
   );
 }
