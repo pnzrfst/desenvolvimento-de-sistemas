@@ -3,24 +3,25 @@ import "./home.css"
 import Profile from "@/components/Profile";
 
 export default function Home() {
+
+  const profiles = [{
+    id: Math.random(),
+    nome: "Luiz",
+    idade: 21,
+    seguindo: 21,
+    seguidores: 21
+  }]
+
   return (
     <section className="home-component">
       <section className="hello-container">
-        <h1>Ola</h1>
+        <h1>Ola, bem vindo!</h1>
+        <h3>Entre na sua conta para continuar</h3>
         <Link href="/login">
-          <button className="go-login">Login</button>
+          <button className="go-login">Ir para login</button>
         </Link>
 
       </section>
-
-      <div>
-        <Profile nome = {"Luiz"} idade = {29} seguindo = {2} seguidores = {3} />
-        <Profile nome = {"Germano"} idade = {29} seguindo = {2} seguidores = {3} />
-        <Profile nome = {"José Pica"} idade = {29} seguindo = {2} seguidores = {3} />
-        <Profile nome = {"José Bolas"} idade = {29} seguindo = {2} seguidores = {3} />
-        <Profile nome = {"Gugu"} idade = {29} seguindo = {2} seguidores = {3} />
-
-      </div>
     </section>
 
   );
