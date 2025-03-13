@@ -3,16 +3,19 @@
 import { useState } from "react";
 import "./styles.css";
 import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
 
 
 export default function Login() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
+    const disabledButton = (!email || !(password.length > 8));
+
     const router = useRouter();
 
     async function handleSubmit() {
-         // EXEMPLO REQUISIÇÃO
+        // EXEMPLO REQUISIÇÃO
         // const respose = await fetch("http://meu-dominio/login", {
         //     method: "POST",
         //     body: {
@@ -44,10 +47,10 @@ export default function Login() {
                     onChange={(event) => setPassword(event.target.value)}
                 />
 
-                <button 
+                <button
                     className="button"
-                    onClick={handleSubmit} 
-                    disabled={!email || !password}
+                    onClick={handleSubmit}
+                    disabled={disabledButton}
                 >
                     Entrar
                 </button>
