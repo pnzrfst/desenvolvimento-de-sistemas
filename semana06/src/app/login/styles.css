@@ -23,6 +23,7 @@
     flex-direction: column;
     padding: 3rem;
     width: 40vw;
+
 }
 
 
@@ -37,7 +38,7 @@
     padding: 0.5rem;
     width: 100%;
     margin-bottom: 1rem;
-    border: none;
+    border: 1px solid lightgray;
     background-color: #fff;
     outline: none;
 }

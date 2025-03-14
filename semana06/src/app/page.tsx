@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <section className="home-component">
       <section className="hello-container">
-        <h1>Ola, bem vindo!</h1>
+        <h1>Olá, bem vindo!</h1>
         <h3>Entre na sua conta para continuar</h3>
         <Link href="/login">
           <button className="go-login">Ir para login</button>

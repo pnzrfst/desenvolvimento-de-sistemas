@@ -1,0 +1,11 @@
+.header-bar{
+    display: flex;
+    padding: 3rem;
+
+
+    & .logo{
+        font-size: 3rem;
+        color: #fff;
+    }
+
+}

@@ -1,0 +1,13 @@
+.user-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 4px solid #3c9eb6cc;
+    outline: 2px solid lightseagreen;
+}
+
+.avatar-with-no-border {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+}
