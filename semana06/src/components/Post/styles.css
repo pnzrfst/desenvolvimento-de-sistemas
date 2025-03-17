@@ -1,0 +1,15 @@
+.post {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 5px 5px 8px 4px rgba(0, 0, 0, 0.1);
+
+    & .post-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+    }
+}
