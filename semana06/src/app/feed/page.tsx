@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import './styles.css'
 import Avatar from '@/components/Avatar'
 import { MdEdit } from "react-icons/md";
+import Post from '@/components/Post';
 
 export default function Feed() {
     return (
@@ -21,8 +22,14 @@ export default function Feed() {
                     </footer>
                 </aside>
 
+                <div></div>
+
                 <main className="feed">
                     <ul className="posts">
+                        <Post PostProps={{} as any} />
+                        <Post PostProps={{} as any} />
+                        <Post PostProps={{} as any} />
+                        <Post PostProps={{} as any} />
                     </ul>
                 </main>
             </section>
