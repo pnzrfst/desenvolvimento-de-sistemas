@@ -1,3 +1,6 @@
+'use client'
+
+import { FormEvent, useState } from "react";
 import Avatar from "../Avatar";
 import "./styles.css";
 
@@ -16,6 +19,13 @@ type PostProps = {
 }
 
 export default function Post({ post }: PostProps) {
+    const [newComment, setNewComment] = useState<string>('');
+
+    function handleCreateNewComment(event: FormEvent) {
+        event.preventDefault();
+        alert(newComment)
+    }
+
     return (
         <article className="post">
             <header>
@@ -47,12 +57,16 @@ export default function Post({ post }: PostProps) {
                 </p>
             </div>
 
-            <form className="form">
+            <form className="form" onSubmit={handleCreateNewComment}>
                 <strong>Deixe um comentário</strong>
-                <textarea placeholder="Deixe um comentário" />
+                <textarea
+                    placeholder="Deixe um comentário"
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                />
 
                 <footer>
-                    <button>
+                    <button disabled={false}>
                         Publicar
                     </button>
                 </footer>
