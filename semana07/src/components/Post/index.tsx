@@ -3,6 +3,8 @@
 import { FormEvent, useState } from "react";
 import Avatar from "../Avatar";
 import "./styles.css";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 type Author = {
     name: string;
@@ -26,35 +28,29 @@ export default function Post({ post }: PostProps) {
         alert(newComment)
     }
 
+    const dateFormat = formatDistanceToNow(post.publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
+
     return (
         <article className="post">
             <header>
                 <div className="author">
-                    <Avatar src={"https://github.com/gustavoroberto1.png"} hasBorder />
+                    <Avatar src={post.author.avatarUrl} hasBorder />
                     <div className="author-info">
-                        <strong>Gutavo Souza</strong>
-                        <span>Desenvolvedor</span>
+                        <strong>{post.author.name}</strong>
+                        <span>{post.author.role}</span>
                     </div>
                 </div>
 
                 <time>
-                    Públicado há 2 horas
+                    {dateFormat}
                 </time>
             </header>
 
             <div className="content">
-                <p>O Lorem Ipsum é um texto modelo
-                    da indústria tipográfica e
-                    de impressão. O Lorem Ipsum
-                    tem vindo a ser o texto padrão
-                    usado por estas indústrias desde o
-                    ano de 1500, quando uma misturou os
-                    caracteres de um texto para criar um
-                    espécime de livro. Este texto não só
-                    sobreviveu 5 séculos, mas também o
-                    salto para a tipografia electrónica,
-                    mantendo-se essencialmente inalterada.
-                </p>
+                <p>{post.content}</p>
             </div>
 
             <form className="form" onSubmit={handleCreateNewComment}>
@@ -62,7 +58,7 @@ export default function Post({ post }: PostProps) {
                 <textarea
                     placeholder="Deixe um comentário"
                     value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
+                    onChange={e => setNewComment(e.target.value)}
                 />
 
                 <footer>
