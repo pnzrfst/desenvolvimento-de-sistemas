@@ -4,8 +4,67 @@ import './styles.css'
 import Avatar from '@/components/Avatar'
 import { MdEdit } from "react-icons/md";
 import Post from '@/components/Post';
+import { FormEvent, useEffect, useState } from 'react';
+import axios from 'axios';
+import TextAreaCustom from '@/components/TextAreaCustom';
+import ButtonCustom from '@/components/ButtonCustom';
+
+
+
+type Author = {
+    name: string;
+    role: string;
+    profile_pic: string;
+}
+
+
+type Post = {
+    id: number;
+    author: Author;
+    publishedAt: Date;
+    content: string;
+}
+
+
 
 export default function Feed() {
+
+    const [posts, setPosts] = useState<Post[]>([]);
+    const [content, setContent] = useState<string>('');
+
+    useEffect(() => {
+        loadPosts()
+    }, [])
+
+    async function loadPosts() {
+        const response = await axios.get("http://localhost:3001/posts");
+        const postSort = response.data.sort((a: any, b: any) => {
+            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+        })
+
+        setPosts(postSort)
+    }
+
+
+    async function handleCreatePosts(event: FormEvent) {
+        event.preventDefault();
+
+        const post = {
+            id: posts.length + 1,
+            content: content,
+            publishedAt: new Date().toISOString(),
+            author: {
+                name: "Luiz Carlos Pedro",
+                role: "Estudante de sistemas",
+                profile_pic: "https://avatars.githubusercontent.com/u/144607216?v=4"
+            }
+        }
+
+        await axios.post("http://localhost:3001/posts", post);
+        await loadPosts();
+        setContent('')
+    }
+
     return (
         <section className="feed-container">
 
@@ -25,12 +84,14 @@ export default function Feed() {
                 <div></div>
 
                 <main className="feed">
-                    <ul className="posts">
-                        <Post PostProps={{} as any} />
-                        <Post PostProps={{} as any} />
-                        <Post PostProps={{} as any} />
-                        <Post PostProps={{} as any} />
-                    </ul>
+                    <form onSubmit={handleCreatePosts} className='form-post'>
+                        <TextAreaCustom message= {content} setMessage={setContent} placeholder='Publique algo....'/>
+                        <ButtonCustom disabled={false} title='Enviar post'/>
+                    </form>
+
+                    {posts.map(item => (
+                        <Post post={item} key={item.id} />
+                    ))}
                 </main>
             </section>
         </section>

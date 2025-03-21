@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "content": "Primeira publicação do MSN fake.",
+      "publishedAt": "2025-03-21T00:23:03.371Z",
+      "author": {
+        "name": "Luiz Carlos Pedro",
+        "role": "Estudante de sistemas",
+        "profile_pic": "https://avatars.githubusercontent.com/u/144607216?v=4"
+      }
+    }
+  ]
+}
