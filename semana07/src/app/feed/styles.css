@@ -67,3 +67,11 @@
     color: #ffffff;
     background-color: #00875f;
 }
+
+.form-post {
+    width: 100%;
+    background-color: #202024;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}

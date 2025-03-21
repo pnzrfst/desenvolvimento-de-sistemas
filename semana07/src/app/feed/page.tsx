@@ -10,6 +10,8 @@ import { PiPencilLineBold } from "react-icons/pi";
 import Post from "@/components/Post";
 import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
+import TextareaCustom from "@/components/TextareaCustom";
+import ButtonCustom from "@/components/ButtonCustom";
 
 type Author = {
     name: string;
@@ -32,16 +34,19 @@ export default function Feed() {
         loadPost();
     }, [])
 
+
     async function loadPost() {
         const response = await axios.get("http://localhost:3001/posts");
-
-        const postSort = response.data.sort((a: any, b: any) => ((new Date(a.publishedAt as any)) as any) - ((new Date(b.publishedAt as any)) as any))
+        const postSort = response.data.sort((a: any, b: any) => (
+            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        ))
 
         setPosts(postSort)
     }
 
     async function handleCreatePost(event: FormEvent) {
         event.preventDefault()
+
         const post = {
             id: posts.length + 1,
             content: content,
@@ -53,6 +58,7 @@ export default function Feed() {
             }
         }
         await axios.post("http://localhost:3001/posts", post);
+
         await loadPost();
         setContent('');
     }
@@ -80,14 +86,14 @@ export default function Feed() {
                 </aside>
 
                 <main className="main">
-                    <form onSubmit={handleCreatePost}>
-                        <textarea
-                            placeholder="O que você está pensando?"
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
-                        />
+                    <form onSubmit={handleCreatePost} className="form-post">
+                        <TextareaCustom
+                            message={content}
+                            setMessage={setContent}
+                            title="O que você está pensando???"
+                        />  
 
-                        <button type="submit">PUBLICAR</button>
+                        <ButtonCustom />
                     </form>
 
                     {posts.map(item => (
