@@ -2,9 +2,11 @@ import './styles.css'
 import Avatar from '../Avatar'
 import { FormEvent, useState } from 'react';
 import { formatDistanceToNow } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { id, ptBR } from "date-fns/locale";
 import TextAreaCustom from '../TextAreaCustom';
 import ButtonCustom from '../ButtonCustom';
+import { randomUUID } from 'crypto';
+import axios from 'axios';
 
 type Author = {
     name: string;
@@ -12,19 +14,20 @@ type Author = {
     profile_pic: string
 }
 
-// type Comment = {
-//     message: string;
-//     publishedAt: Date;
-//     likes: number;
-//     author: Author;
-// }
+type Comment = {
+    message: string;
+    publishedAt: Date;
+    likes: number;
+    author: Author;
+}
 
 type PostProps = {
     post: {
+        id: number;
         author: Author
         publishedAt: Date,
         content: string,
-        // comments: Comment[]
+        comments: Comment[]
 
     }
 }
@@ -33,9 +36,24 @@ export default function Post({post}: PostProps) {
 
     const [newComment, setNewComment] = useState<string>('');
 
-    function handleCreateNewComment(event: FormEvent) {
+    async function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
-        alert(newComment)
+        
+
+        const comment = {
+            id: randomUUID(),
+            comment: newComment,
+            publishedAt: new Date().toISOString(),
+            author: {
+                name: "Misinstrudgerst",
+                role: "Desempregado profissional",
+                profile_pic: "https://media.gazetadopovo.com.br/2022/03/25111240/mendigo_planaltina1-20735422-720x720.jpg"
+            }
+        }
+
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            comments: comment
+        })
     }
 
     const dateFormat = formatDistanceToNow(post.publishedAt, {
