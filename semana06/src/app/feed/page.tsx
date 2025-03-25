@@ -8,21 +8,25 @@ import { FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import TextAreaCustom from '@/components/TextAreaCustom';
 import ButtonCustom from '@/components/ButtonCustom';
-
-
-
 type Author = {
     name: string;
     role: string;
-    profile_pic: string;
+    profile_pic: string
 }
 
+type Comment = {
+    id: string;
+    author: Author;
+    comment: string;
+    publishedAt: Date;
+}
 
 type Post = {
-    id: number;
-    author: Author;
-    publishedAt: Date;
-    content: string;
+    id: string;
+    author: Author
+    publishedAt: Date,
+    content: string,
+    comments: Comment[]
 }
 
 
@@ -50,7 +54,7 @@ export default function Feed() {
         event.preventDefault();
 
         const post = {
-            id: posts.length + 1,
+            id: String(posts.length + 1),
             content: content,
             publishedAt: new Date().toISOString(),
             author: {
@@ -90,7 +94,7 @@ export default function Feed() {
                     </form>
 
                     {posts.map(item => (
-                        <Post post={item} key={item.id} />
+                        <Post post={item} key={item.id} setPosts={setPosts}/>
                     ))}
                 </main>
             </section>
