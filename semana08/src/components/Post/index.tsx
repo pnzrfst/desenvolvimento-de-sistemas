@@ -2,12 +2,14 @@
 
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import Avatar from "../Avatar";
+import { v4 as uuid } from 'uuid';
 import "./styles.css";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import TextareaCustom from "../TextareaCustom";
 import ButtonCustom from "../ButtonCustom";
 import axios from "axios";
+import Comment from "../Comment";
 
 type Author = {
     name: string;
@@ -17,6 +19,7 @@ type Author = {
 
 type Comment = {
     id: string;
+    like: number;
     author: Author;
     comment: string;
     publishedAt: Date
@@ -44,7 +47,7 @@ export default function Post({ post, setPost }: PostProps) {
         // ATUALIZA POSIÇÃO ESPECIFICA DO ESTADO
         setPost((prev: Post[]) =>
             prev.map(atual => (
-                atual.id == post.id ? response.data : atual
+                atual.id === post.id ? response.data : atual
             ))
         )
     }
@@ -53,8 +56,10 @@ export default function Post({ post, setPost }: PostProps) {
         event.preventDefault();
 
         const comment = {
+            id: uuid(),
             comment: newComment,
             publishedAt: new Date().toISOString(),
+            like: 0,
             author: {
                 name: "Gustavo Souza",
                 role: "Full-stack balbalba",
@@ -70,6 +75,32 @@ export default function Post({ post, setPost }: PostProps) {
 
         loadPost();
         setNewComment('');
+    }
+
+    async function handleDeleteComment(event: MouseEvent, id: string) {
+        event.preventDefault();
+        const comentsFilter = post.comments.filter(comment => comment.id !== id);
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            "comments": comentsFilter
+        })
+        
+        loadPost();
+    }
+
+    async function handleLikeComment(event: MouseEvent, id: string) {
+        event.preventDefault();
+        const commentUpdated = post.comments.map(comment => {
+            if (comment.id === id) {
+                return { ...comment, like: comment.like + 1 };
+            }
+            return comment;
+        })
+
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            "comments": commentUpdated
+        })
+
+        loadPost();
     }
 
     const dateFormat = formatDistanceToNow(post.publishedAt, {
@@ -110,11 +141,14 @@ export default function Post({ post, setPost }: PostProps) {
                 </footer>
             </form>
 
-            {post.comments?.length && post.comments.map(comment => (
-                <h1 key={comment.comment}>{comment.comment}</h1>
+            {post.comments?.length && post.comments.map(item => (
+                <Comment 
+                    key={item.id} 
+                    comment={item} 
+                    handleDelete={handleDeleteComment} 
+                    handleLike={handleLikeComment} 
+                />
             ))}
-
-
         </article>
     )
 }

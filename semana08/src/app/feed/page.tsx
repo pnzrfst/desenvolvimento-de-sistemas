@@ -22,6 +22,7 @@ type Author = {
 type Comment = {
     id: string;
     author: Author;
+    like: number;
     comment: string;
     publishedAt: Date
 }
