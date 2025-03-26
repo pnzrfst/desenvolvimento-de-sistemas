@@ -7,6 +7,9 @@ import TextAreaCustom from '../TextAreaCustom';
 import ButtonCustom from '../ButtonCustom';
 import axios from 'axios';
 import { Dispatch, SetStateAction } from 'react';
+import Comment from '../Comments';
+import { v4 as uuid } from 'uuid';
+
 type Author = {
     name: string;
     role: string;
@@ -18,6 +21,7 @@ type Comment = {
     author: Author;
     comment: string;
     publishedAt: Date;
+    likes: number;
 }
 
 type Post = {
@@ -36,8 +40,9 @@ type PostProps = {
 
 
 export default function Post({ post, setPosts }: PostProps) {
-
     const [newComment, setNewComment] = useState<string>('');
+    const [like, setNewlike] = useState<number>(0);
+
 
     async function loadComments() {
         const response = await axios.get(`http://localhost:3001/posts/${post.id}`);
@@ -49,13 +54,17 @@ export default function Post({ post, setPosts }: PostProps) {
     }
 
 
+
+
     async function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
 
 
         const comment = {
+            id: uuid(),
             comment: newComment,
             publishedAt: new Date().toISOString(),
+            likes: 0,
             author: {
                 name: "Misinstrudgerst",
                 role: "Desempregado profissional",
@@ -71,6 +80,37 @@ export default function Post({ post, setPosts }: PostProps) {
 
         setNewComment("");
         loadComments();
+    }
+
+
+    async function increaseLike(event: MouseEvent, id: string) {
+        event.preventDefault();
+
+        const likedComment = post.comments.map(comment => {
+            if(comment.id === id){
+                return {...comment, like: comment.likes + 1};
+            }
+
+            return comment
+        })
+
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            "comments": likedComment
+        })
+
+        loadComments()
+    }
+
+    async function handleDeleteComment(event: MouseEvent, id: string) {
+        event.preventDefault();
+
+        const filteredComments = post.comments.filter(comment => comment.id !== id);
+
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            "comments": filteredComments
+        })
+
+        loadComments()
     }
 
     const dateFormat = formatDistanceToNow(post.publishedAt, {
@@ -107,26 +147,14 @@ export default function Post({ post, setPosts }: PostProps) {
                 </footer>
             </form>
 
-            <section className='comments-area'>
-                <ul>
-                    {post.comments?.length && post.comments.map(comment => (
-                        <li key={comment.comment}>
-                            <div className='comment-header'>
-                                <span className='profile-pic'>{comment.author.profile_pic}</span>
-                                <h1>
-                                    {comment.author.name}
-                                </h1>
-                            </div>
-                            {comment.comment}
-
-                            <time>
-                                {dateFormat}
-                            </time>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
+            {post.comments?.length && post.comments.map(comment => (
+                <Comment
+                    comment={comment}
+                    key={comment.id}
+                    handleDeleteComment={handleDeleteComment}
+                    increaseLike={increaseLike}
+                />
+            ))}
         </article>
     )
 }

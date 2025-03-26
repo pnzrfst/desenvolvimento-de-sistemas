@@ -68,24 +68,3 @@
     max-height: none;
 }
 
-
-.comments-area ul{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.comments-area li{
-    padding: 1rem;
-    background-color: #fff;
-    border: 1px solid #183c46cc;
-    gap: 1rem;
-}
-
-.comments-area .comment-header{
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-}

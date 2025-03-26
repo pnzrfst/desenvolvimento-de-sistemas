@@ -1,0 +1,51 @@
+*{
+    color: #034050ec;
+}
+
+.comments-area{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #fff;
+}
+
+.comment-box{
+    flex: 1;
+    
+}
+
+.comment-content{
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.568);
+    
+}
+
+.comment-content header{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.comment-content header strong{
+    display: block;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.comment-content header time{
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: black;
+}
+
+.comment-box footer{
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.comment-box footer .btn-like{
+    cursor: pointer;
+}

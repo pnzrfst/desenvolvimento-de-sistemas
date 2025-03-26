@@ -18,6 +18,7 @@ type Comment = {
     id: string;
     author: Author;
     comment: string;
+    likes: number;
     publishedAt: Date;
 }
 
