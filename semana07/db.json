@@ -1,0 +1,72 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "content": "Testando \n",
+      "publishedAt": "2025-03-27T22:36:56.851Z",
+      "author": {
+        "name": "Luiz Carlos Pedro",
+        "role": "Estudante de sistemas",
+        "profile_pic": "https://avatars.githubusercontent.com/u/144607216?v=4"
+      },
+      "comments": [
+        {
+          "id": "544fdd6e-ae2f-41f8-b94c-7961dc387cf1",
+          "comment": "Testando",
+          "publishedAt": "2025-03-27T22:37:02.579Z",
+          "likes": 14,
+          "author": {
+            "name": "Misinstrudgerst",
+            "role": "Desempregado profissional",
+            "profile_pic": "https://media.gazetadopovo.com.br/2022/03/25111240/mendigo_planaltina1-20735422-720x720.jpg"
+          }
+        },
+        {
+          "id": "5b00a69b-6e27-440b-a7f9-96710ff3a34e",
+          "comment": "Tstando",
+          "publishedAt": "2025-04-07T22:40:52.278Z",
+          "likes": 0,
+          "author": {
+            "name": "Misinstrudgerst",
+            "role": "Desempregado profissional",
+            "profile_pic": "https://media.gazetadopovo.com.br/2022/03/25111240/mendigo_planaltina1-20735422-720x720.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "content": "A",
+      "publishedAt": "2025-04-07T22:38:10.461Z",
+      "author": {
+        "name": "Luiz Carlos Pedro",
+        "role": "Estudante de sistemas",
+        "profile_pic": "https://avatars.githubusercontent.com/u/144607216?v=4"
+      },
+      "comments": [
+        {
+          "id": "d61b025a-af95-401b-ab24-4339443f9df2",
+          "comment": "AB",
+          "publishedAt": "2025-04-07T22:38:13.949Z",
+          "likes": 0,
+          "author": {
+            "name": "Misinstrudgerst",
+            "role": "Desempregado profissional",
+            "profile_pic": "https://media.gazetadopovo.com.br/2022/03/25111240/mendigo_planaltina1-20735422-720x720.jpg"
+          }
+        },
+        {
+          "id": "67ff2fab-1a00-4292-bc23-46154f3ef836",
+          "comment": "OPA\n",
+          "publishedAt": "2025-04-07T22:39:36.269Z",
+          "likes": 0,
+          "author": {
+            "name": "Misinstrudgerst",
+            "role": "Desempregado profissional",
+            "profile_pic": "https://media.gazetadopovo.com.br/2022/03/25111240/mendigo_planaltina1-20735422-720x720.jpg"
+          }
+        }
+      ]
+    }
+  ]
+}

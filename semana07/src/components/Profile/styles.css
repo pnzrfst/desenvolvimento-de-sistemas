@@ -1,0 +1,22 @@
+.profile-component{
+    gap: 1rem;
+    display: flex;
+    padding: 1rem;
+    width: 100%;    
+}
+
+
+.profile-item{
+    padding: 1rem;
+}
+
+.profile-item .name{
+    font-size: 1rem;
+    padding: 1rem;
+    color: red;
+    font-style: oblique;
+}
+
+.profile-component .about{
+    padding: 1rem;
+}
