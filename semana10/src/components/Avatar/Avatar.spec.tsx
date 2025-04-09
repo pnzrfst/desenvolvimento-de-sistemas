@@ -3,7 +3,7 @@ import Avatar from "."
 
 describe('Componente Avatar', () => {
     it('Deve redenrizar o componente de avatar sem borda.', () => {
-        render(<Avatar src="teste" />)
+        render(<Avatar src="teste" hasBorder={false}/>)
 
         const avatarElement = screen.getByTestId('avatar');
 
