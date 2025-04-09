@@ -39,8 +39,8 @@ export default function Comment({ comment, handleDeleteComment, increaseLike }: 
                             <time>1 hora atrás</time>
                         </div>
                         <button onClick={(event) => handleDeleteComment(event, comment.id)}>
-                            <PiTrash size={16} />
-                            </button>
+                            <PiTrash size={16} data-testid={"buttonDelete"}/>
+                        </button>
                     </header>
                     <p>
                         {comment.comment}
@@ -49,7 +49,7 @@ export default function Comment({ comment, handleDeleteComment, increaseLike }: 
                 </div>
                 <footer>
                     <div>
-                        <BiLike size={20} className="btn-like" onClick={(event) => increaseLike(event, comment.id)} />
+                        <BiLike size={20} className="btn-like" onClick={(event) => increaseLike(event, comment.id)} data-testid={"buttonAplaudir"}/>
                         <span>Aplaudir</span>
                         <span>{comment.likes}</span>
                     </div>
