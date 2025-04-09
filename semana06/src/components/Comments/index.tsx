@@ -1,8 +1,9 @@
 'use client'
 import "./styles.css";
 import Avatar from "../Avatar";
-import { FaTrashCan } from "react-icons/fa6";
+
 import { BiLike } from "react-icons/bi";
+import { PiTrash } from "react-icons/pi";
 
 
 type Author = {
@@ -23,7 +24,7 @@ type CommentProps = {
     }
 }
 
-export default function Comment({comment, handleDeleteComment, increaseLike}: CommentProps) {
+export default function Comment({ comment, handleDeleteComment, increaseLike }: CommentProps) {
 
     return (
         <section className='comments-area' key={comment.id}>
@@ -37,7 +38,9 @@ export default function Comment({comment, handleDeleteComment, increaseLike}: Co
                             </strong>
                             <time>1 hora atrás</time>
                         </div>
-                        <button onClick={(event) => handleDeleteComment(event, comment.id)}><FaTrashCan size={16} /></button>
+                        <button onClick={(event) => handleDeleteComment(event, comment.id)}>
+                            <PiTrash size={16} />
+                            </button>
                     </header>
                     <p>
                         {comment.comment}
@@ -46,7 +49,8 @@ export default function Comment({comment, handleDeleteComment, increaseLike}: Co
                 </div>
                 <footer>
                     <div>
-                        <BiLike size={20} className="btn-like" onClick={(event) => increaseLike(event, comment.id)}>Aplaudir</BiLike>
+                        <BiLike size={20} className="btn-like" onClick={(event) => increaseLike(event, comment.id)} />
+                        <span>Aplaudir</span>
                         <span>{comment.likes}</span>
                     </div>
                 </footer>

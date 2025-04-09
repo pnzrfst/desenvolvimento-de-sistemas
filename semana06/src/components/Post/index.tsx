@@ -88,7 +88,7 @@ export default function Post({ post, setPosts }: PostProps) {
 
         const likedComment = post.comments.map(comment => {
             if(comment.id === id){
-                return {...comment, like: comment.likes + 1};
+                return {...comment, likes: comment.likes + 1};
             }
 
             return comment

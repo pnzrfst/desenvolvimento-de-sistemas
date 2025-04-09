@@ -2,7 +2,7 @@
 import Header from '@/components/Header'
 import './styles.css'
 import Avatar from '@/components/Avatar'
-import { MdEdit } from "react-icons/md";
+import { MdEdit } from 'react-icons/md'
 import Post from '@/components/Post';
 import { FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
@@ -82,7 +82,7 @@ export default function Feed() {
                     </div>
                     <footer className="profile-options">
                         <h4 className="about">Estudante de desenvolvimento de sistemas</h4>
-                        <button className="edit-profile"><MdEdit />Editar perfil</button>
+                        {/* <button className="edit-profile"><MdEdit/>Editar perfil</button> */}
                     </footer>
                 </aside>
 
