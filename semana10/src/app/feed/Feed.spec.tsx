@@ -69,6 +69,8 @@ describe("Página do Feed", () => {
             )
         })
 
+        await waitFor(() => { })
+
         expect(textarea).toHaveValue("");
     })
 })
