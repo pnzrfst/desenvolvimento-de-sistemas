@@ -7,9 +7,7 @@ type ButtonCustomProps = {
 export default function ButtonCustom({ text, handle }: ButtonCustomProps) {
     return (
         <button type="submit" className="button-custom" onClick={handle}>
-            {text ? text : (
-                'Login'
-            )}
+            {text ? text : 'Login'}
         </button>
     )
 }

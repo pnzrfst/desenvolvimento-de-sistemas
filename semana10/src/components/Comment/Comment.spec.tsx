@@ -13,7 +13,6 @@ const mockComment = {
     }
 }
 
-
 describe("Comment component", () => {
     it("Deve renderizar um comentário", () => {
         render(
@@ -53,6 +52,5 @@ describe("Comment component", () => {
         expect(handleDelete).toHaveBeenCalled()
         expect(handleDelete).toHaveBeenCalledTimes(1)
         expect(handleDelete).toHaveBeenCalledWith(expect.any(Object), "1")
-
     })
 })

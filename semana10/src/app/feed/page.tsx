@@ -46,13 +46,18 @@ export default function Feed() {
 
 
     async function loadPost() {
-        setIsLoading(true);
-        const response = await axios.get("http://localhost:3001/posts");
-        const postSort = response.data.sort((a: any, b: any) => (
-            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-        ))
-        setPosts(postSort)
-        setIsLoading(false);
+        try {
+            setIsLoading(true);
+            const response = await axios.get("http://localhost:3001/posts");
+            const postSort = response.data.sort((a: any, b: any) => (
+                new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+            ))
+            setPosts(postSort)
+        } catch (e) {
+            alert("ERROOOOO")
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     async function handleCreatePost(event: FormEvent) {
@@ -104,14 +109,14 @@ export default function Feed() {
                             title="O que você está pensando???"
                         />
 
-                        <ButtonCustom />
+                        <ButtonCustom text="Publicar" handle={() => { }} />
                     </form>
 
                     {isLoading ? (
                         <h1>Carregando...</h1>
                     ) : (
                         posts.map(item => (
-                            <Post post={item} key={item.id} setPost={setPosts} />
+                            <Post post={item} key={item.id} setPost={setPosts}/>
                         ))
                     )}
                 </main>
