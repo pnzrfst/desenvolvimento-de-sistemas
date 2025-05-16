@@ -18,8 +18,19 @@ model Task {
   completed Boolean
   createdAt DateTime
   updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
 
   @@map("tasks")
+}
+
+model Tag {
+  id        String   @id
+  name      String
+  createdAt DateTime
+  updatedAt DateTime
+
+  @@map("tags")
 }
 
 model User {
@@ -30,6 +41,7 @@ model User {
   birthDate DateTime
   createdAt DateTime
   updatedAt DateTime @updatedAt
+  Task      Task[]
 
   @@map("users")
 }

@@ -11,6 +11,9 @@ declare module 'fastify' {
             createdAt: Date;
             updatedAt: Date;
         },
+        task: {
+            id: string
+        }
 
         jwtVerify() : Promise<void>
     }

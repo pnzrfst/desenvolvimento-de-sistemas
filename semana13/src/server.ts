@@ -6,6 +6,7 @@ import authJwt from "./middlewares/authJwt";
 import fastifySwagger from "@fastify/swagger";
 import { swaggerConfig } from "./config/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import TagsController from "./controller/TagsController";
 
 const app = fastify();
 
@@ -19,7 +20,7 @@ app.register(fastifySwaggerUi, {routePrefix: '/docs', uiConfig: { docExpansion: 
 app.register(authJwt);
 app.register(taskController);
 app.register(userController)
-
+app.register(TagsController);
 const PORT = 3333;
 app.listen({ port: PORT }).then(() => {
     console.log(`Backend rodando na porta ${PORT}!`)

@@ -2,8 +2,9 @@ import { Task as TaskPrisma } from "@prisma/client";
 import { prisma } from "../prisma/client";
 
 class TaskService {
-    public async create(text: string): Promise<void> {
+    public async create(text: string, userId: string): Promise<void> {
         const task: TaskPrisma = {
+            userId: userId,
             id: crypto.randomUUID(),
             text: text,
             completed: false,
@@ -14,14 +15,15 @@ class TaskService {
         await prisma.task.create({ data: task });
     }
 
-    public async getAll(): Promise<TaskPrisma[]> {
+    public async getAll(id : string): Promise<TaskPrisma[]> {
         return await prisma.task.findMany({
             orderBy: { createdAt: 'desc' },
+            where: {userId: id}
         });
     }
 
-    public async updateCompleted(id: string): Promise<TaskPrisma> {
-        const task = await prisma.task.findUnique({ where: { id } })
+    public async updateCompleted(id: string, userId: string): Promise<TaskPrisma> {
+        const task = await prisma.task.findUnique({ where: { id, userId: userId },})
         if (task == null) {
             throw new Error("Tarefa não foi encontrada")
         }
@@ -37,8 +39,8 @@ class TaskService {
         })
     }
 
-    public async deleteTask(id: string) {
-        return await prisma.task.delete({ where: { id: id }})
+    public async deleteTask(id: string, userId: string) {
+        return await prisma.task.delete({ where: { id: id, userId: userId }})
     }
 
 }
