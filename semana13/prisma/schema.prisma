@@ -40,3 +40,12 @@ model Tag {
 
   @@map("tags")
 }
+
+
+model TagTask {
+  tagId String
+  taskId String
+
+  @@id([tagId, taskId])
+  @@map("tag_task")
+}
